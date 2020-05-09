@@ -40,4 +40,20 @@ function App() {
   );
 }
 
+function Header() {
+  return (
+      <div></div>
+  )
+
+}function List() {
+  return (
+      <div></div>
+  )
+
+}function Footer() {
+  return (
+      <div></div>
+  )
+}
+
 export default App;
