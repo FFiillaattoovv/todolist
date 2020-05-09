@@ -1,11 +1,12 @@
 import React from "react";
+import Button from "./Button"
 
 export function Footer() {
     return (
         <div className="todoList-footer">
-            <button>All</button>
-            <button>Completed</button>
-            <button>Active</button>
+            <Button />
+            <Button />
+            <Button />
         </div>
     )
 }
