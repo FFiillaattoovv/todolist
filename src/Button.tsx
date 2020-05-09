@@ -1,8 +1,8 @@
 import React from "react";
 
-function Button() {
+function Button(props: any) {
     return (
-        <input type="button" />
+        <input type="button" value={props.text}/>
     )
 }
 

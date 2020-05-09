@@ -4,9 +4,9 @@ import Button from "./Button"
 export function Footer() {
     return (
         <div className="todoList-footer">
-            <Button />
-            <Button />
-            <Button />
+            <Button text="All" />
+            <Button text="Completed" />
+            <Button text="Active" />
         </div>
     )
 }
