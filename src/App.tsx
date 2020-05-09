@@ -7,13 +7,19 @@ import {Footer} from "./Footer";
 function App() {
     return (
         <div className="App">
-            <div className="todoList">
-                <Header />
-                <List />
-                <Footer />
-            </div>
+            <Todolist />
         </div>
     );
+}
+
+function Todolist() {
+    return (
+        <div className="todoList">
+            <Header />
+            <List />
+            <Footer />
+        </div>
+    )
 }
 
 export default App;
