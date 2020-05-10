@@ -1,6 +1,10 @@
 import React from "react";
 
-function Input(props: any) {
+type PropsType = {
+    placeholder: string
+}
+
+function Input(props: PropsType) {
     return (
         <input placeholder={props.placeholder}/>
     )
