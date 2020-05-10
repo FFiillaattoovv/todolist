@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Button.module.css"
+import cn from "classnames";
 
 type PropsType = {
     text: string
@@ -7,19 +8,15 @@ type PropsType = {
 }
 
 function Button(props: PropsType) {
-    let css = "";
 
-    if (props.type === "danger") {
-        css = styles.danger
-    }
-    if (props.type === "success") {
-        css = styles.success
-    }
-    if (props.type === "info") {
-        css = styles.info
-    }
+    let resultCSS = cn({
+        [styles.button]: true,
+        [styles.danger]: props.type === "danger",
+        [styles.danger]: props.type === "success",
+        [styles.danger]: props.type === "info",
+    });
     return (
-        <input className={styles.button + " " + css} type="button" value={props.text}/>
+        <input className={resultCSS} type="button" value={props.text}/>
     )
 }
 
