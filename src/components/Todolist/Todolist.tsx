@@ -3,7 +3,7 @@ import {List} from "./List/List";
 import {Footer} from "./Footer/Footer";
 import React from "react";
 import {TaskType} from "../../App";
-import styles from './style.module.css';
+import styles from './Todolist.module.css';
 
 
 type PropsType = {
