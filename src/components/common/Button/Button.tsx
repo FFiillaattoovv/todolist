@@ -9,14 +9,14 @@ type PropsType = {
 
 function Button(props: PropsType) {
 
-    let resultCSS = cn({
+    let css = cn({
         [styles.button]: true,
         [styles.danger]: props.type === "danger",
         [styles.danger]: props.type === "success",
         [styles.danger]: props.type === "info",
     });
     return (
-        <input className={resultCSS} type="button" value={props.text}/>
+        <input className={css} type="button" value={props.text}/>
     )
 }
 

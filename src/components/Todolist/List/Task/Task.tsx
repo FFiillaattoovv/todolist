@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './Task.module.css';
+import cn from "classnames"
 
 type PropsType = {
     title: string
@@ -7,10 +8,14 @@ type PropsType = {
 }
 
 function Task(props: PropsType) {
-    const css = props.isDone ? styles.done : "";
+    const css = cn({
+        [styles.task]: true,
+        [styles.done]: props.isDone
+    });
+
     return (
         <div className="styles.list">
-            <div className={styles.task + " " + css}>
+            <div className={css}>
                 <input type="checkbox" checked={props.isDone}/>
                 <span>{props.title}</span>
             </div>
