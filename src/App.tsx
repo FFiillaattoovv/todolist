@@ -1,3 +1,4 @@
+import styles from './App.module.css';
 import React from 'react';
 import './App.css';
 import {Todolist} from "./Todolist";
@@ -16,7 +17,7 @@ function App() {
         { id: v1(), title: 'React', isDone: false}
     ]
     return (
-        <div className="App">
+        <div className={styles.App}>
             <Todolist />
         </div>
     );
