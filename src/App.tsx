@@ -17,7 +17,9 @@ function App() {
     ]
     return (
         <div className={styles.App}>
-            <Todolist />
+            <Todolist tasks={tasks}/>
+            <Todolist tasks={tasks}/>
+            <Todolist tasks={tasks}/>
         </div>
     );
 }

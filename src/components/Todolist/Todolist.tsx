@@ -10,11 +10,11 @@ type PropsType = {
     tasks: Array<TaskType>
 }
 
-export function Todolist(props: any) {
+export function Todolist(props: PropsType) {
     return (
         <div className={styles.todolist}>
             <Header />
-            <List />
+            <List tasks={props.tasks}/>
             <Footer />
         </div>
     )
