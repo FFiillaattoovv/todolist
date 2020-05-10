@@ -8,12 +8,13 @@ import styles from './style.module.css';
 
 type PropsType = {
     tasks: Array<TaskType>
+    title: string
 }
 
 export function Todolist(props: PropsType) {
     return (
         <div className={styles.todolist}>
-            <Header />
+            <Header title={props.title}/>
             <List tasks={props.tasks}/>
             <Footer />
         </div>
