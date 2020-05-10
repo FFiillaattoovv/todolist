@@ -1,6 +1,6 @@
 import React from "react";
-import Task from "./Task";
-import {TaskType} from "./App";
+import Task from "./Task/Task";
+import {TaskType} from "../../../App";
 
 type PropsType = {
     tasks: Array<TaskType>
