@@ -14,6 +14,16 @@ function App() {
         { id: v1(), title: 'CSS', isDone: true},
         { id: v1(), title: 'JS', isDone: true},
         { id: v1(), title: 'React', isDone: false}
+    ];
+    const tasks1: Array<TaskType> = [
+        { id: v1(), title: 'CSS', isDone: true},
+        { id: v1(), title: 'JS', isDone: true},
+        { id: v1(), title: 'React', isDone: false}
+    ];
+    const tasks2: Array<TaskType> = [
+        { id: v1(), title: 'CSS', isDone: true},
+        { id: v1(), title: 'JS', isDone: true},
+        { id: v1(), title: 'React', isDone: false}
     ]
     return (
         <div className={styles.App}>
