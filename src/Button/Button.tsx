@@ -1,7 +1,11 @@
 import React from "react";
 import styles from "./style.module.css"
 
-function Button(props: any) {
+type PropsType = {
+    text: string
+}
+
+function Button(props: PropsType) {
     return (
         <input className={styles.button} type="button" value={props.text}/>
     )
