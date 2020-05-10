@@ -1,8 +1,9 @@
-import {Header} from "./Header";
-import {List} from "./List";
-import {Footer} from "./Footer";
+import {Header} from "../Header";
+import {List} from "../List";
+import {Footer} from "../Footer";
 import React from "react";
-import {TaskType} from "./App";
+import {TaskType} from "../App";
+import styles from './style.module.css';
 
 
 type PropsType = {
@@ -11,7 +12,7 @@ type PropsType = {
 
 export function Todolist(props: PropsType) {
     return (
-        <div className="todoList">
+        <div className={styles.todolist}>
             <Header/>
             <List/>
             <Footer/>

@@ -1,7 +1,7 @@
 import styles from './App.module.css';
 import React from 'react';
 import './App.css';
-import {Todolist} from "./Todolist";
+import {Todolist} from "./Todolist/Todolist";
 import {v1} from "uuid";
 
 export type TaskType = {
@@ -18,6 +18,8 @@ function App() {
     ]
     return (
         <div className={styles.App}>
+            <Todolist />
+            <Todolist />
             <Todolist />
         </div>
     );
