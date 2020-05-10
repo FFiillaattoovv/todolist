@@ -1,13 +1,18 @@
 import React from "react";
 import Task from "./Task";
+import {TaskType} from "./App";
 
-export function List() {
+type PropsType = {
+    tasks: Array<TaskType>
+}
+
+export function List(props: PropsType) {
     return (
         <div className="styles.list">
-            <Task title="CSS" isDone={true} />
-            <Task title="JS" isDone={false} />
-            <Task title="ReactJS" isDone={false} />
-            <Task title="Patterns" isDone={true} />
+            <Task title={props.tasks[0].title} isDone={props.tasks[0].isDone} />
+            <Task title={props.tasks[0].title} isDone={props.tasks[0].isDone} />
+            <Task title={props.tasks[0].title} isDone={props.tasks[0].isDone} />
+            <Task title={props.tasks[0].title} isDone={props.tasks[0].isDone} />
         </div>
     )
 

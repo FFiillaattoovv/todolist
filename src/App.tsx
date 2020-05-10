@@ -1,6 +1,5 @@
 import styles from './App.module.css';
 import React from 'react';
-import './App.css';
 import {Todolist} from "./Todolist/Todolist";
 import {v1} from "uuid";
 
@@ -18,9 +17,7 @@ function App() {
     ]
     return (
         <div className={styles.App}>
-            <Todolist />
-            <Todolist />
-            <Todolist />
+            <Todolist tasks={}/>
         </div>
     );
 }
