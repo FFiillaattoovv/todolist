@@ -1,5 +1,17 @@
 .button {
     padding: 5px;
-    background-color: #4090ff;
+    background-color: aliceblue;
+    border: solid black 1px;
+}
+.info {
+    background-color: cornflowerblue;
+    color: white;
+}
+.success {
+    background-color: forestgreen;
+    color: white;
+}
+.danger {
+    background-color: darkred;
     color: white;
 }
