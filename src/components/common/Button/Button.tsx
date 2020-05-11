@@ -12,8 +12,8 @@ function Button(props: PropsType) {
     let css = cn({
         [styles.button]: true,
         [styles.danger]: props.type === "danger",
-        [styles.danger]: props.type === "success",
-        [styles.danger]: props.type === "info",
+        [styles.success]: props.type === "success",
+        [styles.info]: props.type === "info",
     });
     return (
         <input className={css} type="button" value={props.text}/>
