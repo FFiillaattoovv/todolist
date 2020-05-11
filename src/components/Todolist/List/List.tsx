@@ -9,7 +9,7 @@ type PropsType = {
 export function List(props: PropsType) {
 
     let jsxElements = props.tasks.map( (t) => {
-        return <Task title={t.title} isDone={t.isDone} />
+        return <Task key={t.id} title={t.title} isDone={t.isDone} />
     })
     return (
         <div className="styles.list">
