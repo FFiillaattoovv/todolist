@@ -18,6 +18,7 @@ function Task(props: PropsType) {
             <div className={css}>
                 <input type="checkbox" checked={props.isDone}/>
                 <span>{props.title}</span>
+                <button>x</button>
             </div>
         </div>
     )
