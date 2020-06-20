@@ -9,7 +9,7 @@ export type TaskType = {
 }
 
 function App() {
-    let tasks1 = [
+    let tasks1: Array<TaskType> = [
         {id: 1, title: "HTML&CSS", isDone: true},
         {id: 2, title: "JavaScript", isDone: true},
         {id: 3, title: "React", isDone: false}
