@@ -5,6 +5,7 @@ type PropsType = {
     title: string
     tasks: Array<TaskType>
     removeTask: Function
+    changeFilter: Function
 }
 
 export function Todolist(props: PropsType) {
