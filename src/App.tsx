@@ -24,7 +24,7 @@ function App() {
 
     return (
         <div className="App">
-            <Todolist title="What to learn" tasks={tasks}/>
+            <Todolist title="What to learn" tasks={tasks} removeTask={removeTask}/>
         </div>
     )
 }
