@@ -16,10 +16,7 @@ function App() {
     ]
 
     function removeTask(id: number) {
-        let resultTasks = tasks.filter(() => {
-            return true
-        })
-        console.log(resultTasks)
+        let resultTasks = tasks.filter(t => t.id !== id)
     }
 
     return (
