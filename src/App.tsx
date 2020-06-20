@@ -1,31 +1,30 @@
 import styles from './App.module.css';
 import React from 'react';
 import {Todolist} from "./components/Todolist/Todolist";
-import {v1} from "uuid";
 
 export type TaskType = {
-    id: string
+    id: number
     title: string
     isDone: boolean
 }
 
 function App() {
     const tasks: Array<TaskType> = [
-        { id: v1(), title: 'CSS', isDone: true},
-        { id: v1(), title: 'JS', isDone: true},
-        { id: v1(), title: 'React', isDone: false},
-        { id: v1(), title: 'Patterns', isDone: true},
+        { id: 1, title: 'CSS', isDone: true},
+        { id: 2, title: 'JS', isDone: true},
+        { id: 3, title: 'React', isDone: false},
+        { id: 4, title: 'Patterns', isDone: true},
 
     ];
     const tasks1: Array<TaskType> = [
-        { id: v1(), title: 'Run', isDone: true},
-        { id: v1(), title: 'breakfast', isDone: true},
-        { id: v1(), title: 'Learn', isDone: false},
-        { id: v1(), title: 'Dream', isDone: false}
+        { id: 1, title: 'Run', isDone: true},
+        { id: 2, title: 'breakfast', isDone: true},
+        { id: 3, title: 'Learn', isDone: false},
+        { id: 4, title: 'Dream', isDone: false}
     ];
     const tasks2: Array<TaskType> = [
-        { id: v1(), title: 'Milk', isDone: true},
-        { id: v1(), title: 'Fruits', isDone: false}
+        { id: 1, title: 'Milk', isDone: true},
+        { id: 2, title: 'Fruits', isDone: false}
     ]
     return (
         <div className={styles.App}>
