@@ -9,14 +9,14 @@ export type TaskType = {
 }
 
 function App() {
-    let tasks1: Array<TaskType> = [
+    let tasks: Array<TaskType> = [
         {id: 1, title: "HTML&CSS", isDone: true},
         {id: 2, title: "JavaScript", isDone: true},
         {id: 3, title: "React", isDone: false}
     ]
     return (
         <div className="App">
-            <Todolist title="What to learn" tasks={tasks1}/>
+            <Todolist title="What to learn" tasks={tasks}/>
         </div>
     )
 }
