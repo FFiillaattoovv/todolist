@@ -9,11 +9,19 @@ export type TaskType = {
 }
 
 function App() {
-    let tasks: Array<TaskType> = [
+    const tasks: Array<TaskType> = [
         {id: 1, title: "HTML&CSS", isDone: true},
         {id: 2, title: "JavaScript", isDone: true},
         {id: 3, title: "React", isDone: false}
     ]
+
+    function removeTask(id: number) {
+        let resultTasks = tasks.filter(() => {
+            return true
+        })
+        console.log(resultTasks)
+    }
+
     return (
         <div className="App">
             <Todolist title="What to learn" tasks={tasks}/>
