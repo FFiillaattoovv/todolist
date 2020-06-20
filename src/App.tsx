@@ -9,14 +9,14 @@ export type TaskType = {
 }
 
 function App() {
-    const tasks: Array<TaskType> = [
+    let tasks: Array<TaskType> = [
         {id: 1, title: "HTML&CSS", isDone: true},
         {id: 2, title: "JavaScript", isDone: true},
         {id: 3, title: "React", isDone: false}
     ]
 
     function removeTask(id: number) {
-        let resultTasks = tasks.filter(t => t.id !== id)
+        tasks = tasks.filter(t => t.id !== id)
     }
 
     return (
