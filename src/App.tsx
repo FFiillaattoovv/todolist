@@ -11,7 +11,7 @@ export type TaskType = {
 export type FilterValuesType = "all" | "completed" | "active";
 
 function App() {
-    let [tasks, setTasks] = useState([
+    let [tasks, setTasks] = useState<Array<TaskType>>([
         {id: 1, title: "HTML&CSS", isDone: true},
         {id: 2, title: "JavaScript", isDone: true},
         {id: 3, title: "React", isDone: false}
