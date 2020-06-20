@@ -1,7 +1,10 @@
 import React from "react";
+import {TaskType} from "./App";
 
 type PropsType = {
     title: string
+    tasks: Array<TaskType>;
+
 }
 
 export function Todolist(props: PropsType) {
