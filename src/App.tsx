@@ -15,9 +15,7 @@ function App() {
         {id: 3, title: "React", isDone: false}
     ]
 
-    let arr = useState(initTasks);
-    let tasks = arr[0];
-    let setTasks = arr[1];
+    let [tasks, setTasks] = useState(initTasks);
 
     function removeTask(id: number) {
         let filteredTasks = tasks.filter(t => t.id !== id);
