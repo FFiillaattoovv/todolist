@@ -20,13 +20,19 @@ export function Todolist(props: PropsType) {
 
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.charCode === 13) {
-            props.addTask(newTaskTitle);
+            if(newTaskTitle.trim() === "") {
+                return;
+            }
+            props.addTask(newTaskTitle.trim());
             setNewTaskTitle("");
         }
     }
 
     const addTask = () => {
-        props.addTask(newTaskTitle);
+        if(newTaskTitle.trim() === "") {
+            return;
+        }
+        props.addTask(newTaskTitle.trim());
         setNewTaskTitle("");
     }
 
