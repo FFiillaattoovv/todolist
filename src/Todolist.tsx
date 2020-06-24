@@ -48,9 +48,11 @@ export function Todolist(props: PropsType) {
                 <ul>
                     {
                         props.tasks.map(t => {
-                            const onRemoveHandler = () => {props.removeTask(t.id)}
+                            const onRemoveHandler = () => {
+                                props.removeTask(t.id)
+                            }
                             const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-
+                                props.changeTaskStatus(t.id, e.currentTarget.checked);
                             }
                             return <li>
                                 <input type="checkbox" checked={t.isDone} onChange={onChangeHandler}/>
