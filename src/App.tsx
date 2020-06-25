@@ -73,13 +73,13 @@ function App() {
         <div className="App">
             {
                 todolists.map((tl) => {
-                    let tasksForTodolist = tasks;
+                    let tasksForTodolist = tasks[tl.id];
 
                     if (tl.filter === "completed") {
-                        tasksForTodolist = tasks.filter(t => t.isDone === true);
+                        tasksForTodolist = tasksForTodolist.filter(t => t.isDone === true);
                     }
                     if (tl.filter === "active") {
-                        tasksForTodolist = tasks.filter(t => t.isDone === false);
+                        tasksForTodolist = tasksForTodolist.filter(t => t.isDone === false);
                     }
                     return <Todolist
                         key={tl.id}
