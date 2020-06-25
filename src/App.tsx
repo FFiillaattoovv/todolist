@@ -44,8 +44,8 @@ function App() {
         setTasks([...tasks]);
     }
 
-    function changeFilter(value: FilterValuesType) {
-        setFilter(value)
+    function changeFilter(value: FilterValuesType, todolistId: string) {
+
     }
 
     let todolists: Array<TodolistType> = [
@@ -65,7 +65,8 @@ function App() {
                     if (tl.filter === "active") {
                         tasksForTodolist = tasks.filter(t => t.isDone === false);
                     }
-                   return <Todolist
+                    return <Todolist
+                        key={tl.id}
                         title={tl.title}
                         tasks={tasksForTodolist}
                         removeTask={removeTask}
@@ -73,6 +74,7 @@ function App() {
                         addTask={addTask}
                         changeTaskStatus={changeStatus}
                         filter={tl.filter}
+                        id={tl.id}
                     />
                 })
             }
