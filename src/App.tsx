@@ -25,8 +25,6 @@ function App() {
         {id: v1(), title: "Rest API", isDone: false}
     ]);
 
-    let [filter, setFilter] = useState<FilterValuesType>("all")
-
     function removeTask(id: string) {
         let filteredTasks = tasks.filter(t => t.id !== id);
         setTasks(filteredTasks);
@@ -61,10 +59,10 @@ function App() {
                 todolists.map((tl) => {
                     let tasksForTodolist = tasks;
 
-                    if (filter === "completed") {
+                    if (tl.filter === "completed") {
                         tasksForTodolist = tasks.filter(t => t.isDone === true);
                     }
-                    if (filter === "active") {
+                    if (tl.filter === "active") {
                         tasksForTodolist = tasks.filter(t => t.isDone === false);
                     }
                    return <Todolist
