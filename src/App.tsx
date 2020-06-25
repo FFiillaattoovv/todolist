@@ -54,7 +54,7 @@ function App() {
         {id: todolistId2, title: "What to buy", filter: "completed"}
     ])
 
-    let [allTasks, setAllTasks] = useState({
+    let [tasks, setTasks] = useState({
         [todolistId1]: [
             {id: v1(), title: "HTML&CSS", isDone: true},
             {id: v1(), title: "JavaScript", isDone: true},
