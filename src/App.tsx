@@ -33,12 +33,13 @@ function App() {
         setTasks({...tasksObj});
     }
 
-    function changeStatus(taskId: string, isDone: boolean) {
+    function changeStatus(taskId: string, isDone: boolean, todolistId: string) {
+        let tasks = tasksObj[todolistId];
         let task = tasksObj.find(t => t.id === taskId);
         if (task) {
             task.isDone = isDone;
+            setTasks({...tasksObj});
         }
-        setTasks([...tasksObj]);
     }
 
     function changeFilter(value: FilterValuesType, todolistId: string) {
