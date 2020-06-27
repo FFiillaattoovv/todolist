@@ -22,14 +22,15 @@ function App() {
     function removeTask(id: string, todolistId: string) {
         let tasks = tasksObj[todolistId];
         let filteredTasks = tasksObj.filter(t => t.id !== id);
-        tasksObj[todolistId] = filteredTasks;
         setTasks({...tasksObj});
     }
 
-    function addTask(title: string) {
-        let newTask = {id: v1(), title: title, isDone: false};
-        let newTasks = [newTask, ...tasksObj];
-        setTasks(newTasks);
+    function addTask(title: string, todolistId: string) {
+        let task = {id: v1(), title: title, isDone: false};
+        let tasks = tasksObj[todolistId];
+        let newTasks = [task, ...tasks];
+        tasksObj[todolistId] = newTasks;
+        setTasks({...tasksObj});
     }
 
     function changeStatus(taskId: string, isDone: boolean) {
