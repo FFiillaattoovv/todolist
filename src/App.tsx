@@ -19,9 +19,11 @@ type TodolistType = {
 
 function App() {
 
-    function removeTask(id: string) {
+    function removeTask(id: string, todolistId: string) {
+        let tasks = tasksObj[todolistId];
         let filteredTasks = tasksObj.filter(t => t.id !== id);
-        setTasks(filteredTasks);
+        tasksObj[todolistId] = filteredTasks;
+        setTasks({...tasksObj});
     }
 
     function addTask(title: string) {
