@@ -36,7 +36,7 @@ function App() {
 
     function changeStatus(taskId: string, isDone: boolean, todolistId: string) {
         let tasks = tasksObj[todolistId];
-        let task = tasksObj.find(t => t.id === taskId);
+        let task = tasks.find(t => t.id === taskId);
         if (task) {
             task.isDone = isDone;
             setTasks({...tasksObj});
