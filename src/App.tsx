@@ -83,6 +83,7 @@ function App() {
 
     return (
         <div className="App">
+            <input type="text"/> <button>+</button>
             {
                 todolists.map((tl) => {
                     let tasksForTodolist = tasksObj[tl.id];
