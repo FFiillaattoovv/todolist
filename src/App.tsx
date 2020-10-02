@@ -138,6 +138,7 @@ function App() {
                         filter={tl.filter}
                         id={tl.id}
                         removeTodolist={removeTodolist}
+                        changeTodolistTitle={changeTodolistTitle}
                     />
                 })
             }
