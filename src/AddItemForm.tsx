@@ -1,5 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
-import {Button, TextField} from "@material-ui/core";
+import {Button, IconButton, TextField} from "@material-ui/core";
+import {ControlPoint} from "@material-ui/icons";
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void
@@ -41,7 +42,9 @@ export function AddItemForm(props: AddItemFormPropsType) {
                    onChange={onNewTitleChangeHandler}
                    onKeyPress={onKeyPressHandler}
             />
-            <Button onClick={addTask} variant={"contained"} color={"primary"}>+</Button>
+            <IconButton onClick={addTask} color={"primary"}>
+                <ControlPoint/>
+            </IconButton>
         </div>
     )
 }
