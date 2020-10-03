@@ -49,7 +49,7 @@ export function Todolist(props: PropsType) {
                 </IconButton>
             </h3>
             <AddItemForm addItem={addTask}/>
-            <ul>
+            <div>
                 {
                     props.tasks.map(t => {
                         const onRemoveHandler = () => {
@@ -61,16 +61,16 @@ export function Todolist(props: PropsType) {
                         const onChangeTitleHandler = (newValue: string) => {
                             props.changeTaskTitle(t.id, newValue, props.id);
                         }
-                        return <li className={t.isDone ? "is-done" : ""}>
+                        return <div className={t.isDone ? "is-done" : ""}>
                             <Checkbox checked={t.isDone} onChange={onChangeStatusHandler}/>
                             <EditableSpan title={t.title} onChange={onChangeTitleHandler}/>
                             <IconButton aria-label="delete" onClick={onRemoveHandler}>
                                 <Delete/>
                             </IconButton>
-                        </li>
+                        </div>
                     })
                 }
-            </ul>
+            </div>
             <div>
                 <Button variant={props.filter === "all" ? "contained" : "text"}
                         onClick={onAllClickHandler}>All
