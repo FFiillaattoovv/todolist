@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Todolist} from "./Todolist";
-import {v1} from "uuid";
-import {AddItemForm} from "./AddItemForm";
-import {Button, AppBar, IconButton, Toolbar, Typography, Container, Grid, Paper} from "@material-ui/core";
+import {Todolist} from './Todolist';
+import {v1} from 'uuid';
+import {AddItemForm} from './AddItemForm';
+import {Button, AppBar, IconButton, Toolbar, Typography, Container, Grid, Paper} from '@material-ui/core';
 import {Menu} from '@material-ui/icons';
 
 export type TaskType = {
@@ -16,7 +16,7 @@ export type TasksStateType = {
     [key: string]: Array<TaskType>
 }
 
-export type FilterValuesType = "all" | "completed" | "active";
+export type FilterValuesType = 'all' | 'completed' | 'active';
 
 export type TodolistType = {
     id: string
@@ -71,8 +71,8 @@ function App() {
     let todolistId2 = v1();
 
     let [todolists, setTodolists] = useState<Array<TodolistType>>([
-        {id: todolistId1, title: "What to learn", filter: "all"},
-        {id: todolistId2, title: "What to buy", filter: "all"}
+        {id: todolistId1, title: 'What to learn', filter: 'all'},
+        {id: todolistId2, title: 'What to buy', filter: 'all'}
     ])
 
     let removeTodolist = (todolistId: string) => {
@@ -92,22 +92,22 @@ function App() {
 
     let [tasksObj, setTasks] = useState<TasksStateType>({
         [todolistId1]: [
-            {id: v1(), title: "HTML&CSS", isDone: true},
-            {id: v1(), title: "JavaScript", isDone: true},
-            {id: v1(), title: "React", isDone: false},
-            {id: v1(), title: "Rest API", isDone: false}
+            {id: v1(), title: 'HTML&CSS', isDone: true},
+            {id: v1(), title: 'JavaScript', isDone: true},
+            {id: v1(), title: 'React', isDone: false},
+            {id: v1(), title: 'Rest API', isDone: false}
         ],
         [todolistId2]: [
-            {id: v1(), title: "Book", isDone: false},
-            {id: v1(), title: "Milk", isDone: true},
-            {id: v1(), title: "Egg", isDone: false},
-            {id: v1(), title: "Fruits", isDone: true}
+            {id: v1(), title: 'Book', isDone: false},
+            {id: v1(), title: 'Milk', isDone: true},
+            {id: v1(), title: 'Egg', isDone: false},
+            {id: v1(), title: 'Fruits', isDone: true}
         ]
     })
 
     function addTodolist(title: string) {
         let todolist: TodolistType = {
-            filter: "all",
+            filter: 'all',
             id: v1(),
             title: title
         }
@@ -129,7 +129,7 @@ function App() {
                 </Toolbar>
             </AppBar>
             <Container fixed>
-                <Grid container style={ {padding: "20px"} }>
+                <Grid container style={{padding: '20px'}}>
                     <AddItemForm addItem={addTodolist}/>
                 </Grid>
                 <Grid container spacing={3}>
@@ -137,15 +137,15 @@ function App() {
                         todolists.map((tl) => {
                             let tasksForTodolist = tasksObj[tl.id];
 
-                            if (tl.filter === "completed") {
+                            if (tl.filter === 'completed') {
                                 tasksForTodolist = tasksForTodolist.filter(t => t.isDone === true);
                             }
-                            if (tl.filter === "active") {
+                            if (tl.filter === 'active') {
                                 tasksForTodolist = tasksForTodolist.filter(t => t.isDone === false);
                             }
                             return (
                                 <Grid item>
-                                    <Paper style={ {padding: "10px"} }>
+                                    <Paper style={{padding: '10px'}}>
                                         <Todolist
                                             key={tl.id}
                                             title={tl.title}
