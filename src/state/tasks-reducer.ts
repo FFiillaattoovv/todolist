@@ -16,10 +16,11 @@ type ActionsType = RemoveTaskActionType | AddedTaskActionType
 export const tasksReducer = (state: TasksStateType, action: ActionsType): TasksStateType => {
     switch (action.type) {
         case 'REMOVE-TASK': {
+            const stateCopy = {...state};
             let tasks = state[action.todolistId];
             let filteredTasks = tasks.filter(t => t.id !== action.taskId);
-            state[action.todolistId] = filteredTasks;
-            return {...state};
+            stateCopy[action.todolistId] = filteredTasks;
+            return stateCopy;
         }
         default:
             throw new Error('I don\'t understand this action type');
