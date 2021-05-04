@@ -31,6 +31,6 @@ export const removeTaskAC = (taskId: string, todolistId: string): RemoveTaskActi
     return {type: 'REMOVE-TASK', taskId: taskId, todolistId: todolistId}
 }
 
-export const addedTaskAC = (todolistId: string): AddedTaskActionType => {
+export const addTaskAC = (todolistId: string): AddedTaskActionType => {
     return {type: '', todolistId: todolistId}
 }
