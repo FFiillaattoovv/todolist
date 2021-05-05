@@ -1,5 +1,5 @@
 import {TasksStateType} from '../App';
-import {addTaskAC, changeTaskStatusAC, removeTaskAC, tasksReducer} from './tasks-reducer';
+import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from './tasks-reducer';
 
 
 test('correct task should be deleted from correct array', () => {
@@ -72,4 +72,26 @@ test('status of specified task should be changed', () => {
 
     expect(endState['todolistId1'][1].isDone).toBeFalsy();
     expect(endState['todolistId2'][1].isDone).toBeTruthy();
+});
+
+test('title of specified task should be changed', () => {
+    const startState: TasksStateType = {
+        'todolistId1': [
+            {id: '1', title: 'HTML&CSS', isDone: true},
+            {id: '2', title: 'JavaScript', isDone: true},
+            {id: '3', title: 'React', isDone: false},
+            {id: '4', title: 'Rest API', isDone: false}
+        ],
+        'todolistId2': [
+            {id: '1', title: 'Book', isDone: false},
+            {id: '2', title: 'Milk', isDone: true},
+            {id: '3', title: 'Egg', isDone: false},
+            {id: '4', title: 'Fruits', isDone: true}
+        ]
+    };
+
+    const endState = tasksReducer(startState, changeTaskTitleAC('2', 'New title', 'todolistId1'))
+
+    expect(endState['todolistId1'][1].title).toBe('New title');
+    expect(endState['todolistId2'][1].title).toBe('Milk');
 });
