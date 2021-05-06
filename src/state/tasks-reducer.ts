@@ -26,7 +26,12 @@ type ChangeTaskTitleActionType = {
     todolistId: string
 }
 
-type ActionsType = RemoveTaskActionType | AddTaskActionType | ChangeTaskStatusActionType | ChangeTaskTitleActionType;
+type AddTodolistActionType = {
+    type: 'ADD-TODOLIST'
+    title: string
+}
+
+type ActionsType = RemoveTaskActionType | AddTaskActionType | ChangeTaskStatusActionType | ChangeTaskTitleActionType | AddTodolistActionType;
 
 export const tasksReducer = (state: TasksStateType, action: ActionsType): TasksStateType => {
     switch (action.type) {
@@ -63,6 +68,10 @@ export const tasksReducer = (state: TasksStateType, action: ActionsType): TasksS
             }
             return stateCopy;
         }
+        case 'ADD-TODOLIST': {
+            const stateCopy = {...state};
+            return stateCopy;
+        }
         default:
             throw new Error('I don\'t understand this action type');
     }
@@ -82,4 +91,8 @@ export const changeTaskStatusAC = (taskId: string, isDone: boolean, todolistId: 
 
 export const changeTaskTitleAC = (taskId: string, newTitle: string, todolistId: string): ChangeTaskTitleActionType => {
     return {type: 'CHANGE-TASK-TITLE', taskId: taskId, newTitle: newTitle, todolistId: todolistId}
+}
+
+export const AddTodolistAC = (title: string): AddTodolistActionType => {
+    return {type: 'ADD-TODOLIST', title: title}
 }
