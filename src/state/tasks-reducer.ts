@@ -51,7 +51,6 @@ export const tasksReducer = (state: TasksStateType, action: ActionsType): TasksS
             let task = tasks.find(t => t.id === action.taskId);
             if (task) {
                 task.isDone = action.isDone;
-                return stateCopy;
             }
             return stateCopy;
         }
@@ -61,7 +60,6 @@ export const tasksReducer = (state: TasksStateType, action: ActionsType): TasksS
             let task = tasks.find(t => t.id === action.taskId);
             if (task) {
                 task.title = action.newTitle;
-                return stateCopy;
             }
             return stateCopy;
         }
