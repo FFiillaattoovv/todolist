@@ -90,7 +90,7 @@ export const tasksReducer = (state: TasksStateType = initialState, action: Actio
             return stateCopy;
         }
         default:
-            return {...state};
+            return state;
     }
 }
 
