@@ -43,11 +43,15 @@ function AppWithReducers() {
     ])
 
     let removeTodolist = (todolistId: string) => {
-        dispatchToTodolistsReducer(removeTodolistAC(todolistId));
+        const action = removeTodolistAC(todolistId);
+        dispatchToTodolistsReducer(action);
+        dispatchToTasksReducer(action);
     }
 
     function addTodolist(title: string) {
-        dispatchToTodolistsReducer(addTodolistAC(title));
+        const action = addTodolistAC(title);
+        dispatchToTodolistsReducer(action);
+        dispatchToTasksReducer(action);
     }
 
     function changeFilter(value: FilterValuesType, todolistId: string) {
