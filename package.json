@@ -24,7 +24,8 @@
     "react-scripts": "3.4.1",
     "redux": "^4.1.0",
     "typescript": "~3.7.2",
-    "uuid": "^8.1.0"
+    "uuid": "^8.1.0",
+    "yarn": "^1.22.10"
   },
   "scripts": {
     "start": "react-scripts start",
