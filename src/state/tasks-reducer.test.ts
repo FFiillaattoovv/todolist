@@ -1,7 +1,7 @@
 import {TasksStateType} from '../App';
 import {
     addTaskAC,
-    AddTodolistAC,
+    addTodolistAC,
     changeTaskStatusAC,
     changeTaskTitleAC,
     removeTaskAC,
@@ -119,7 +119,7 @@ test('new array should be added when new todolist is added', () => {
         ]
     };
 
-    const endState = tasksReducer(startState, AddTodolistAC('new todolist'));
+    const endState = tasksReducer(startState, addTodolistAC('new todolist'));
 
     const keys = Object.keys(endState);
     const newKey = keys.find(k => k !== 'todolistId1' && k !== 'todolistId2');

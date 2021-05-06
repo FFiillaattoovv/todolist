@@ -1,4 +1,5 @@
 import {TasksStateType} from '../App';
+import {v1} from 'uuid';
 
 type RemoveTaskActionType = {
     type: 'REMOVE-TASK'
@@ -95,6 +96,6 @@ export const changeTaskTitleAC = (taskId: string, newTitle: string, todolistId: 
     return {type: 'CHANGE-TASK-TITLE', taskId: taskId, newTitle: newTitle, todolistId: todolistId}
 }
 
-export const AddTodolistAC = (title: string, todolistId: string): AddTodolistActionType => {
-    return {type: 'ADD-TODOLIST', title: title, todolistId: todolistId}
+export const addTodolistAC = (title: string): AddTodolistActionType => {
+    return {type: 'ADD-TODOLIST', title: title, todolistId: v1()}
 }
