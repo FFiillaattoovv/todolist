@@ -1,9 +1,9 @@
-import React, {ChangeEvent} from "react";
-import {FilterValuesType, TaskType} from "./App";
-import {AddItemForm} from "./AddItemForm";
-import {EditableSpan} from "./EditableSpan";
-import {Button, Checkbox, IconButton} from "@material-ui/core";
-import {Delete} from "@material-ui/icons";
+import React, {ChangeEvent, useCallback} from 'react';
+import {FilterValuesType, TaskType} from './App';
+import {AddItemForm} from './AddItemForm';
+import {EditableSpan} from './EditableSpan';
+import {Button, Checkbox, IconButton} from '@material-ui/core';
+import {Delete} from '@material-ui/icons';
 
 type PropsType = {
     title: string
@@ -21,19 +21,19 @@ type PropsType = {
 
 export function Todolist(props: PropsType) {
 
-    const onAllClickHandler = () => props.changeFilter("all", props.id);
+    const onAllClickHandler = () => props.changeFilter('all', props.id);
 
-    const onActiveClickHandler = () => props.changeFilter("active", props.id);
+    const onActiveClickHandler = () => props.changeFilter('active', props.id);
 
-    const onCompletedClickHandler = () => props.changeFilter("completed", props.id);
+    const onCompletedClickHandler = () => props.changeFilter('completed', props.id);
 
     const removeTodolist = () => {
         props.removeTodolist(props.id);
     }
 
-    const addTask = (title: string) => {
+    const addTask = useCallback((title: string) => {
         props.addTask(title, props.id);
-    }
+    }, []);
 
     const changeTodolistTitle = (newtitle: string) => {
         props.changeTodolistTitle(props.id, newtitle);
@@ -61,7 +61,7 @@ export function Todolist(props: PropsType) {
                         const onChangeTitleHandler = (newValue: string) => {
                             props.changeTaskTitle(t.id, newValue, props.id);
                         }
-                        return <div className={t.isDone ? "is-done" : ""}>
+                        return <div className={t.isDone ? 'is-done' : ''}>
                             <Checkbox checked={t.isDone} onChange={onChangeStatusHandler}/>
                             <EditableSpan title={t.title} onChange={onChangeTitleHandler}/>
                             <IconButton aria-label="delete" onClick={onRemoveHandler}>
@@ -72,13 +72,13 @@ export function Todolist(props: PropsType) {
                 }
             </div>
             <div>
-                <Button variant={props.filter === "all" ? "contained" : "text"}
+                <Button variant={props.filter === 'all' ? 'contained' : 'text'}
                         onClick={onAllClickHandler}>All
                 </Button>
-                <Button color={"primary"} variant={props.filter === "active" ? "contained" : "text"}
+                <Button color={'primary'} variant={props.filter === 'active' ? 'contained' : 'text'}
                         onClick={onActiveClickHandler}>Active
                 </Button>
-                <Button color={"secondary"} variant={props.filter === "completed" ? "contained" : "text"}
+                <Button color={'secondary'} variant={props.filter === 'completed' ? 'contained' : 'text'}
                         onClick={onCompletedClickHandler}>Completed
                 </Button>
             </div>
