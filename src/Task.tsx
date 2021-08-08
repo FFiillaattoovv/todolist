@@ -22,6 +22,7 @@ export const Task = React.memo((props: TaskPropsType) => {
     const onChangeTitleHandler = useCallback((newValue: string) => {
         props.changeTaskTitle(props.task.id, newValue, props.todolistId);
     }, [props.changeTaskTitle, props.task.id, props.todolistId]);
+
     return <div className={props.task.isDone ? 'is-done' : ''}>
         <Checkbox checked={props.task.isDone} onChange={onChangeStatusHandler}/>
         <EditableSpan title={props.task.title} onChange={onChangeTitleHandler}/>
