@@ -33,4 +33,10 @@ export const todolistsAPI = {
     updateTodolistTitle(id: string, title: string) {
         return axios.put<ResponseType<{}>>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${id}`, {title: title}, settings);
     },
+    getTasks(todolistId: string) {
+        return axios.get(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}/tasks`, settings);
+    },
+    createTask(todolistId: string, title: string) {
+        return axios.post(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}/tasks`, {title: title}, settings);
+    },
 }
