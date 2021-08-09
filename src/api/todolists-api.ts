@@ -47,21 +47,21 @@ type GetTaskResponseType = {
 
 export const todolistsAPI = {
     getTodolists() {
-        return instance.get<Array<TodolistsType>>('todo-lists', settings);
+        return instance.get<Array<TodolistsType>>('todo-lists');
     },
     createTodolist(title: string) {
-        return instance.post<ResponseType<{ item: TodolistsType }>>('todo-lists', {title: title}, settings);
+        return instance.post<ResponseType<{ item: TodolistsType }>>('todo-lists', {title: title});
     },
     deleteTodolist(id: string) {
-        return instance.delete<ResponseType<{}>>(`todo-lists/${id}`, settings);
+        return instance.delete<ResponseType<{}>>(`todo-lists/${id}`);
     },
     updateTodolistTitle(id: string, title: string) {
-        return instance.put<ResponseType<{}>>(`todo-lists/${id}`, {title: title}, settings);
+        return instance.put<ResponseType<{}>>(`todo-lists/${id}`, {title: title});
     },
     getTasks(todolistId: string) {
-        return instance.get<GetTaskResponseType>(`todo-lists/${todolistId}/tasks`, settings);
+        return instance.get<GetTaskResponseType>(`todo-lists/${todolistId}/tasks`);
     },
     createTask(todolistId: string, title: string) {
-        return instance.post(`todo-lists/${todolistId}/tasks`, {title: title}, settings);
+        return instance.post(`todo-lists/${todolistId}/tasks`, {title: title});
     },
 }
