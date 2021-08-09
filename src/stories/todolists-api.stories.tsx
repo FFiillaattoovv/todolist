@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import axios from 'axios';
 import {todolistsAPI} from '../api/todolists-api';
 
 export default {
@@ -83,6 +82,20 @@ export const CreateTask = () => {
     useEffect(() => {
         const todolistId = '7c78bec1-592e-4706-8863-e7504023e539';
         todolistsAPI.createTask(todolistId, 'Milk')
+            .then((response) => {
+                setState(response.data)
+            })
+    }, [])
+
+    return <div> {JSON.stringify(state)}</div>
+}
+
+export const DeleteTask = () => {
+    const [state, setState] = useState<any>(null)
+    useEffect(() => {
+        const todolistId = '7c78bec1-592e-4706-8863-e7504023e539';
+        const taskId = '076d4081-aada-40c8-850b-22bf51793686';
+        todolistsAPI.deleteTask(todolistId, taskId)
             .then((response) => {
                 setState(response.data)
             })
