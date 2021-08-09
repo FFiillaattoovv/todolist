@@ -20,6 +20,26 @@ type ResponseType<D> = {
     data: D
 }
 
+type TaskType = {
+    description: string
+    title: string
+    completed: boolean
+    status: number
+    priority: number
+    startDate: number
+    deadline: number
+    id: string
+    todoListId: string
+    order: number
+    addedDate: string
+}
+
+type GetTaskResponseType = {
+    items: Array<TaskType>
+    totalCount: number
+    error: string | null
+}
+
 export const todolistsAPI = {
     getTodolists() {
         return axios.get<Array<TodolistsType>>('https://social-network.samuraijs.com/api/1.1/todo-lists', settings);
@@ -34,7 +54,7 @@ export const todolistsAPI = {
         return axios.put<ResponseType<{}>>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${id}`, {title: title}, settings);
     },
     getTasks(todolistId: string) {
-        return axios.get(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}/tasks`, settings);
+        return axios.get<GetTaskResponseType>(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}/tasks`, settings);
     },
     createTask(todolistId: string, title: string) {
         return axios.post(`https://social-network.samuraijs.com/api/1.1/todo-lists/${todolistId}/tasks`, {title: title}, settings);
