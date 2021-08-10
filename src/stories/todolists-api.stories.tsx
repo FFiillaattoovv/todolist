@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {todolistsAPI} from '../api/todolists-api';
+import {todolistsAPI, UpdateTaskType} from '../api/todolists-api';
 
 export default {
     title: 'API'
@@ -109,7 +109,7 @@ export const UpdateTask = () => {
     useEffect(() => {
         const todolistId = '7c78bec1-592e-4706-8863-e7504023e539';
         const taskId = '64fb7287-16f3-4852-a97b-fb2cc7e6647b';
-        const properties = {
+        const properties: UpdateTaskType = {
             title: 'New title',
             description: 'New description',
             completed: false,
