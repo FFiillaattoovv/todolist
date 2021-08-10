@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import './App.css';
 import {Todolist} from './Todolist';
 import {AddItemForm} from './AddItemForm';
@@ -8,12 +8,13 @@ import {
     addTodolistAC,
     changeTodolistFilterAC,
     changeTodolistTitleAC,
-    removeTodolistAC
+    removeTodolistAC, setTodolistAC
 } from './state/todolists-reducer';
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from './state/tasks-reducer';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType} from './state/store';
 import {TasksStateType} from './AppWithReducers';
+import {todolistsAPI} from './api/todolists-api';
 
 export type FilterValuesType = 'all' | 'completed' | 'active';
 
@@ -26,6 +27,13 @@ export type TodolistType = {
 function AppWithRedux() {
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        todolistsAPI.getTodolists()
+            .then(response => {
+                dispatch(setTodolistAC(response.data));
+            })
+    }, [])
 
     const todolists = useSelector<AppRootStateType, Array<TodolistType>>(state => state.todolists);
 
@@ -43,7 +51,7 @@ function AppWithRedux() {
         dispatch(changeTodolistFilterAC(value, todolistId));
     }, [dispatch]);
 
-    const changeTodolistTitle = useCallback((id: string, newTitle: string) =>  {
+    const changeTodolistTitle = useCallback((id: string, newTitle: string) => {
         dispatch(changeTodolistTitleAC(id, newTitle));
     }, [dispatch]);
 
