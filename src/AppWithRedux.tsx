@@ -8,7 +8,7 @@ import {
     addTodolistAC,
     changeTodolistFilterAC,
     changeTodolistTitleAC,
-    fetchTodolistsThunk,
+    fetchTodolistsTC,
     removeTodolistAC
 } from './state/todolists-reducer';
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from './state/tasks-reducer';
@@ -29,7 +29,7 @@ function AppWithRedux() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchTodolistsThunk);
+        dispatch(fetchTodolistsTC);
     }, [])
 
     const todolists = useSelector<AppRootStateType, Array<TodolistType>>(state => state.todolists);
