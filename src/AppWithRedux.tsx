@@ -7,14 +7,14 @@ import {Menu} from '@material-ui/icons';
 import {
     addTodolistAC,
     changeTodolistFilterAC,
-    changeTodolistTitleAC, fetchTodolistsThunk,
-    removeTodolistAC, setTodolistAC
+    changeTodolistTitleAC,
+    fetchTodolistsThunk,
+    removeTodolistAC
 } from './state/todolists-reducer';
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from './state/tasks-reducer';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppRootStateType} from './state/store';
 import {TasksStateType} from './AppWithReducers';
-import {todolistsAPI} from './api/todolists-api';
 
 export type FilterValuesType = 'all' | 'completed' | 'active';
 
