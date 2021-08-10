@@ -21,7 +21,7 @@ export const GetTodolists = () => {
 export const CreateTodolist = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        todolistsAPI.createTodolist('What to learn')
+        todolistsAPI.createTodolist('What to watch')
             .then((response) => {
                 setState(response.data)
             })
@@ -33,7 +33,7 @@ export const CreateTodolist = () => {
 export const DeleteTodolist = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        const todolistId = '218049e9-9be9-45c3-9bd4-9ba15f760298'
+        const todolistId = 'ee426d8b-779d-4e8a-a49b-6cf1321b70e5'
         todolistsAPI.deleteTodolist(todolistId)
             .then((response) => {
                 setState(response.data)
@@ -59,7 +59,7 @@ export const UpdateTodolistTitle = () => {
 export const GetTasks = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        const todolistId = '7c78bec1-592e-4706-8863-e7504023e539';
+        const todolistId = '22646910-b6a5-4803-ae33-b05b8c1afdf2';
         todolistsAPI.getTasks(todolistId)
             .then((response) => {
                 setState(response.data)
@@ -73,8 +73,8 @@ export const GetTasks = () => {
 export const CreateTask = () => {
     const [state, setState] = useState<any>(null)
     useEffect(() => {
-        const todolistId = '7c78bec1-592e-4706-8863-e7504023e539';
-        todolistsAPI.createTask(todolistId, 'Milk')
+        const todolistId = '22646910-b6a5-4803-ae33-b05b8c1afdf2';
+        todolistsAPI.createTask(todolistId, 'Wrath of Man')
             .then((response) => {
                 setState(response.data)
             })
