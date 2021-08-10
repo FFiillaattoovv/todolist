@@ -7,7 +7,7 @@ import {Menu} from '@material-ui/icons';
 import {
     addTodolistAC,
     changeTodolistFilterAC,
-    changeTodolistTitleAC,
+    changeTodolistTitleAC, fetchTodolistsThunk,
     removeTodolistAC, setTodolistAC
 } from './state/todolists-reducer';
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from './state/tasks-reducer';
@@ -29,10 +29,7 @@ function AppWithRedux() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        todolistsAPI.getTodolists()
-            .then(response => {
-                dispatch(setTodolistAC(response.data));
-            })
+        fetchTodolistsThunk(dispatch);
     }, [])
 
     const todolists = useSelector<AppRootStateType, Array<TodolistType>>(state => state.todolists);
