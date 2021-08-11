@@ -141,3 +141,7 @@ export const addTodolistAC = (title: string): AddTodolistActionType => {
 export const setTodolistAC = (todolists: Array<TodolistType>): SetTodolistActionType => {
     return {type: 'SET-TODOLIST', todolists: todolists}
 }
+
+export const setTasksAC = (tasks: Array<TaskType>, todolistId: string): SetTasksActionType => {
+    return {type: 'SET-TASKS', tasks: tasks, todolistId: todolistId}
+}
