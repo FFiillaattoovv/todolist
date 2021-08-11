@@ -29,7 +29,7 @@ function AppWithRedux() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchTodolistsTC);
+        dispatch(fetchTodolistsTC());
     }, [])
 
     const todolists = useSelector<AppRootStateType, Array<TodolistType>>(state => state.todolists);

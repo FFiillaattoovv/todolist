@@ -25,7 +25,7 @@ type ResponseType<D = {}> = {
     data: D
 }
 
-type TaskType = {
+export type TaskType = {
     description: string
     title: string
     completed: boolean
@@ -37,6 +37,7 @@ type TaskType = {
     todoListId: string
     order: number
     addedDate: string
+    isDone: boolean
 }
 
 type GetTaskResponseType = {
