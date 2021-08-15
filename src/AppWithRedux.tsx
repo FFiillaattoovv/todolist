@@ -21,13 +21,14 @@ import {TasksStateType} from './App';
 
 function AppWithRedux() {
 
+    const todolists = useSelector<AppRootStateType, Array<TodolistDomainType>>(state => state.todolists);
+    const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchTodolistsTC());
     }, [])
 
-    const todolists = useSelector<AppRootStateType, Array<TodolistDomainType>>(state => state.todolists);
 
     const removeTodolist = useCallback((todolistId: string) => {
         const action = removeTodolistAC(todolistId);
@@ -47,7 +48,6 @@ function AppWithRedux() {
         dispatch(changeTodolistTitleAC(id, newTitle));
     }, [dispatch]);
 
-    const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks);
 
     const removeTask = useCallback((id: string, todolistId: string) => {
         dispatch(removeTaskAC(id, todolistId));

@@ -16,16 +16,6 @@ import {
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from './state/tasks-reducer';
 import {TaskPriorities, TaskStatuses} from './api/todolists-api';
 
-export type TaskType = {
-    id: string
-    title: string
-    status: TaskStatuses
-}
-
-export type TasksStateType = {
-    [key: string]: Array<TaskType>
-}
-
 function AppWithReducers() {
 
     let todolistId1 = v1();
