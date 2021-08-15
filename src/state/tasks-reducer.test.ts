@@ -3,7 +3,7 @@ import {
     addTaskAC,
     changeTaskStatusAC,
     changeTaskTitleAC,
-    removeTaskAC,
+    removeTaskAC, setTasksAC,
     tasksReducer
 } from './tasks-reducer';
 import {addTodolistAC, removeTodolistAC} from './todolists-reducer';
@@ -90,4 +90,17 @@ test('property with todolistId should be deleted', () => {
 
     expect(keys.length).toBe(1);
     expect(endState['todolistId2']).not.toBeDefined();
+});
+
+test('tasks should be added for todolist', () => {
+
+    const action = setTasksAC(startState['todolistId1'], 'todolistId1');
+
+    const endState = tasksReducer({
+        'todolistId2': [],
+        'todolistId1': []
+    }, action);
+
+    expect(endState['todolistId1'].length).toBe(4);
+    expect(endState['todolistId2'].length).toBe(0);
 });
