@@ -1,6 +1,5 @@
-import {FilterValuesType, TodolistType} from '../App';
 import {v1} from 'uuid';
-import {todolistsAPI, TodolistsType} from '../api/todolists-api';
+import {todolistsAPI, TodolistType} from '../api/todolists-api';
 import {Dispatch} from 'redux';
 
 export type RemoveTodolistActionType = {
@@ -28,7 +27,13 @@ export type ChangeTodolistFilterActionType = {
 
 export type SetTodolistActionType = {
     type: 'SET-TODOLIST'
-    todolists: Array<TodolistsType>
+    todolists: Array<TodolistType>
+}
+
+export type FilterValuesType = 'all' | 'completed' | 'active';
+
+export type TodolistDomainType = TodolistType & {
+    filter: FilterValuesType
 }
 
 type ActionsType =
@@ -41,9 +46,9 @@ type ActionsType =
 export const todolistId1 = v1();
 export const todolistId2 = v1();
 
-const initialState: Array<TodolistType> = [];
+const initialState: Array<TodolistDomainType> = [];
 
-export const todolistsReducer = (state: Array<TodolistType> = initialState, action: ActionsType): Array<TodolistType> => {
+export const todolistsReducer = (state: Array<TodolistDomainType> = initialState, action: ActionsType): Array<TodolistDomainType> => {
     switch (action.type) {
         case 'REMOVE-TODOLIST': {
             return state.filter(tl => tl.id !== action.id);
@@ -52,7 +57,9 @@ export const todolistsReducer = (state: Array<TodolistType> = initialState, acti
             return [{
                 title: action.title,
                 id: action.todolistId,
-                filter: 'all'
+                filter: 'all',
+                addedDate: '',
+                order: 0
             }, ...state];
         }
         case 'CHANGE-TODOLIST-TITLE': {
@@ -98,7 +105,7 @@ export const changeTodolistFilterAC = (filter: FilterValuesType, id: string): Ch
     return {type: 'CHANGE-TODOLIST-FILTER', filter: filter, id: id}
 }
 
-export const setTodolistAC = (todolists: Array<TodolistsType>): SetTodolistActionType => {
+export const setTodolistAC = (todolists: Array<TodolistType>): SetTodolistActionType => {
     return {type: 'SET-TODOLIST', todolists: todolists}
 }
 
