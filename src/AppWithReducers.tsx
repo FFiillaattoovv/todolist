@@ -74,7 +74,18 @@ function AppWithReducers() {
     }
 
     function addTask(title: string, todolistId: string) {
-        dispatchToTasksReducer(addTaskAC(title, todolistId));
+        dispatchToTasksReducer(addTaskAC({
+            id: 'test id',
+            title: title,
+            status: TaskStatuses.New,
+            todoListId: todolistId,
+            description: '',
+            order: 0,
+            priority: TaskPriorities.Low,
+            addedDate: '',
+            startDate: '',
+            deadline: ''
+        }));
     }
 
     function changeStatus(taskId: string, status: TaskStatuses, todolistId: string) {
