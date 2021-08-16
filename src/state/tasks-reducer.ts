@@ -1,6 +1,6 @@
 import {TasksStateType} from '../App';
 import {RemoveTodolistActionType} from './todolists-reducer';
-import {TaskPriorities, TaskStatuses, TaskType, todolistsAPI, TodolistType} from '../api/todolists-api';
+import {TaskStatuses, TaskType, todolistsAPI, TodolistType} from '../api/todolists-api';
 import {Dispatch} from 'redux';
 
 type RemoveTaskActionType = {
@@ -11,8 +11,7 @@ type RemoveTaskActionType = {
 
 type AddTaskActionType = {
     type: 'ADD-TASK'
-    title: string
-    todolistId: string
+    task: TaskType
 }
 
 type ChangeTaskStatusActionType = {
@@ -69,12 +68,10 @@ export const tasksReducer = (state: TasksStateType = initialState, action: Actio
         }
         case 'ADD-TASK': {
             const stateCopy = {...state};
-            let task: TaskType = {
-                id: '0', title: action.title, status: TaskStatuses.New, todoListId: action.todolistId, description: '',
-                startDate: '', deadline: '', addedDate: '', order: 0, priority: TaskPriorities.Low};
-            let tasks = stateCopy[action.todolistId];
-            let newTasks = [task, ...tasks];
-            stateCopy[action.todolistId] = newTasks;
+            let newTask: TaskType = action.task;
+            let tasks = stateCopy[newTask.todoListId];
+            let newTasks = [newTask, ...tasks];
+            stateCopy[newTask.todoListId] = newTasks;
             return stateCopy;
         }
         case 'CHANGE-TASK-STATUS': {
@@ -124,8 +121,8 @@ export const removeTaskAC = (taskId: string, todolistId: string): RemoveTaskActi
     return {type: 'REMOVE-TASK', taskId: taskId, todolistId: todolistId}
 }
 
-export const addTaskAC = (title: string, todolistId: string): AddTaskActionType => {
-    return {type: 'ADD-TASK', title: title, todolistId: todolistId}
+export const addTaskAC = (task: TaskType): AddTaskActionType => {
+    return {type: 'ADD-TASK', task: task}
 }
 
 export const changeTaskStatusAC = (taskId: string, status: TaskStatuses, todolistId: string): ChangeTaskStatusActionType => {
