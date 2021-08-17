@@ -66,7 +66,7 @@ test('correct task should be added to correct array', () => {
 
 test('status of specified task should be changed', () => {
 
-    const endState = tasksReducer(startState, updateTaskAC('2', TaskStatuses.New, 'todolistId1'));
+    const endState = tasksReducer(startState, updateTaskAC('2', {status: TaskStatuses.New}, 'todolistId1'));
 
     expect(endState['todolistId1'][1].status).toBe(TaskStatuses.New);
     expect(endState['todolistId2'][1].status).toBe(TaskStatuses.Completed);
@@ -82,7 +82,12 @@ test('title of specified task should be changed', () => {
 
 test('new array should be added when new todolist is added', () => {
 
-    const endState = tasksReducer(startState, addTodolistAC('new todolist'));
+    const endState = tasksReducer(startState, addTodolistAC({
+        id: 'todolistId3',
+        order: 0,
+        title: 'new todolist',
+        addedDate: ''
+    }));
 
     const keys = Object.keys(endState);
     const newKey = keys.find(k => k !== 'todolistId1' && k !== 'todolistId2');
