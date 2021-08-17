@@ -122,7 +122,6 @@ export const UpdateTask = () => {
         const properties: UpdateTaskType = {
             title: 'New title',
             description: 'New description',
-            completed: false,
             status: 0,
             priority: 0,
             startDate: '',
