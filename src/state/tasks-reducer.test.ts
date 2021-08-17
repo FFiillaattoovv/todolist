@@ -1,12 +1,5 @@
 import {TasksStateType} from '../App';
-import {
-    addTaskAC,
-    updateTaskAC,
-    changeTaskTitleAC,
-    removeTaskAC,
-    setTasksAC,
-    tasksReducer
-} from './tasks-reducer';
+import {addTaskAC, removeTaskAC, setTasksAC, tasksReducer, updateTaskAC} from './tasks-reducer';
 import {addTodolistAC, removeTodolistAC} from './todolists-reducer';
 import {TaskPriorities, TaskStatuses} from '../api/todolists-api';
 
@@ -74,7 +67,7 @@ test('status of specified task should be changed', () => {
 
 test('title of specified task should be changed', () => {
 
-    const endState = tasksReducer(startState, changeTaskTitleAC('2', 'New title', 'todolistId1'));
+    const endState = tasksReducer(startState, updateTaskAC('2', {title: 'New title'}, 'todolistId1'));
 
     expect(endState['todolistId1'][1].title).toBe('New title');
     expect(endState['todolistId2'][1].title).toBe('Milk');
