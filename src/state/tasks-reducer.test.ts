@@ -1,7 +1,7 @@
 import {TasksStateType} from '../App';
 import {
     addTaskAC,
-    changeTaskStatusAC,
+    updateTaskAC,
     changeTaskTitleAC,
     removeTaskAC,
     setTasksAC,
@@ -66,7 +66,7 @@ test('correct task should be added to correct array', () => {
 
 test('status of specified task should be changed', () => {
 
-    const endState = tasksReducer(startState, changeTaskStatusAC('2', TaskStatuses.New, 'todolistId1'));
+    const endState = tasksReducer(startState, updateTaskAC('2', TaskStatuses.New, 'todolistId1'));
 
     expect(endState['todolistId1'][1].status).toBe(TaskStatuses.New);
     expect(endState['todolistId2'][1].status).toBe(TaskStatuses.Completed);
