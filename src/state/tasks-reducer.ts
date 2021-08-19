@@ -3,7 +3,7 @@ import {RemoveTodolistActionType} from './todolists-reducer';
 import {TaskType, todolistsAPI, TodolistType, UpdateTaskType} from '../api/todolists-api';
 import {Dispatch} from 'redux';
 import {AppRootStateType} from './store';
-import {setErrorAC, SetErrorActionType} from './app-reducer';
+import {setErrorAC, SetErrorActionType, setStatusAC, SetStatusActionType} from './app-reducer';
 
 type RemoveTaskActionType = {
     type: 'REMOVE-TASK'
@@ -139,10 +139,12 @@ export const setTasksAC = (tasks: Array<TaskType>, todolistId: string): SetTasks
 }
 
 export const fetchTasksTC = (todolistId: string) => {
-    return (dispatch: Dispatch) => {
+    return (dispatch: Dispatch<ActionsType | SetStatusActionType>) => {
+        dispatch(setStatusAC('loading'));
         todolistsAPI.getTasks(todolistId)
             .then(response => {
                 dispatch(setTasksAC(response.data.items, todolistId));
+                dispatch(setStatusAC('succeeded'));
             })
     }
 }
@@ -155,17 +157,20 @@ export const removeTaskTC = (taskId: string, todolistId: string) => {
 }
 
 export const addTaskTC = (title: string, todolistId: string) => {
-    return (dispatch: Dispatch<ActionsType | SetErrorActionType>) => {
+    return (dispatch: Dispatch<ActionsType | SetErrorActionType | SetStatusActionType>) => {
+        dispatch(setStatusAC('loading'));
         todolistsAPI.createTask(todolistId, title)
             .then(res => {
                 if (res.data.resultCode === 0) {
                     dispatch(addTaskAC(res.data.data.item));
+                    dispatch(setStatusAC('succeeded'));
                 } else {
                     if (res.data.messages.length) {
                         dispatch(setErrorAC(res.data.messages[0]))
                     } else {
                         dispatch(setErrorAC('Some error occurred'));
                     }
+                    dispatch(setStatusAC('failed'));
                 }
             })
     }

@@ -1,6 +1,7 @@
 import {v1} from 'uuid';
 import {todolistsAPI, TodolistType} from '../api/todolists-api';
 import {Dispatch} from 'redux';
+import {setStatusAC, SetStatusActionType} from './app-reducer';
 
 export type RemoveTodolistActionType = {
     type: 'REMOVE-TODOLIST'
@@ -41,6 +42,8 @@ type ActionsType =
     | ChangeTodolistTitleActionType
     | ChangeTodolistFilterActionType
     | SetTodolistActionType
+
+type ThunkDispatch = Dispatch<ActionsType | SetStatusActionType>;
 
 export const todolistId1 = v1();
 export const todolistId2 = v1();
@@ -106,10 +109,12 @@ export const setTodolistAC = (todolists: Array<TodolistType>): SetTodolistAction
 }
 
 export const fetchTodolistsTC = () => {
-    return (dispatch: Dispatch) => {
+    return (dispatch: ThunkDispatch) => {
+        dispatch(setStatusAC('loading'));
         todolistsAPI.getTodolists()
             .then(response => {
                 dispatch(setTodolistAC(response.data));
+                dispatch(setStatusAC('succeeded'));
             })
     }
 }
@@ -124,10 +129,12 @@ export const removeTodolistTC = (todolistId: string) => {
 }
 
 export const addTodolistTC = (title: string) => {
-    return (dispatch: Dispatch) => {
+    return (dispatch: ThunkDispatch) => {
+        dispatch(setStatusAC('loading'));
         todolistsAPI.createTodolist(title)
             .then(response => {
                 dispatch(addTodolistAC(response.data.data.item));
+                dispatch(setStatusAC('succeeded'));
             })
     }
 }

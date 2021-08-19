@@ -29,11 +29,13 @@ import {AppRootStateType} from '../state/store';
 import {TaskStatuses} from '../api/todolists-api';
 import {TasksStateType} from './App';
 import {ErrorSnackbar} from '../components/ErrorSnackbar/ErrorSnackbar';
+import {RequestStatusType} from '../state/app-reducer';
 
 function AppWithRedux() {
 
     const todolists = useSelector<AppRootStateType, Array<TodolistDomainType>>(state => state.todolists);
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks);
+    const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -87,7 +89,7 @@ function AppWithRedux() {
                     </Typography>
                     <Button color="inherit">Login</Button>
                 </Toolbar>
-                <LinearProgress />
+                {status === 'loading' && <LinearProgress/>}
             </AppBar>
             <Container fixed>
                 <Grid container style={{padding: '20px'}}>
@@ -122,7 +124,6 @@ function AppWithRedux() {
                     }
                 </Grid>
             </Container>
-
         </div>
     )
 }
