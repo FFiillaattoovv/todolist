@@ -56,6 +56,15 @@ type ActionsType =
     | SetTodolistActionType
     | SetTasksActionType
 
+type UpdateDomainTaskModelType = {
+    title?: string
+    description?: string
+    status?: number
+    priority?: number
+    startDate?: string
+    deadline?: string
+}
+
 const initialState: TasksStateType = {};
 
 export const tasksReducer = (state: TasksStateType = initialState, action: ActionsType): TasksStateType => {
@@ -118,6 +127,7 @@ export const tasksReducer = (state: TasksStateType = initialState, action: Actio
     }
 }
 
+
 export const removeTaskAC = (taskId: string, todolistId: string): RemoveTaskActionType => {
     return {type: 'REMOVE-TASK', taskId: taskId, todolistId: todolistId}
 }
@@ -137,6 +147,7 @@ export const changeTaskTitleAC = (taskId: string, newTitle: string, todolistId: 
 export const setTasksAC = (tasks: Array<TaskType>, todolistId: string): SetTasksActionType => {
     return {type: 'SET-TASKS', tasks: tasks, todolistId: todolistId}
 }
+
 
 export const fetchTasksTC = (todolistId: string) => {
     return (dispatch: Dispatch<ActionsType | SetStatusActionType>) => {
@@ -174,15 +185,6 @@ export const addTaskTC = (title: string, todolistId: string) => {
                 }
             })
     }
-}
-
-type UpdateDomainTaskModelType = {
-    title?: string
-    description?: string
-    status?: number
-    priority?: number
-    startDate?: string
-    deadline?: string
 }
 
 export const updateTaskTC = (taskId: string, domainModel: UpdateDomainTaskModelType, todolistId: string) => {
