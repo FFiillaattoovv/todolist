@@ -1,7 +1,7 @@
 import {v1} from 'uuid';
 import {todolistsAPI, TodolistType} from '../api/todolists-api';
 import {Dispatch} from 'redux';
-import {RequestStatusType, setAppStatusAC, SetStatusActionType} from './app-reducer';
+import {RequestStatusType, setAppStatusAC, SetAppStatusActionType} from './app-reducer';
 
 export type RemoveTodolistActionType = {
     type: 'REMOVE-TODOLIST'
@@ -51,7 +51,7 @@ type ActionsType =
     | SetTodolistActionType
     | ChangeTodolistEntityStatusActionType
 
-type ThunkDispatch = Dispatch<ActionsType | SetStatusActionType>;
+type ThunkDispatch = Dispatch<ActionsType | SetAppStatusActionType>;
 
 export const todolistId1 = v1();
 export const todolistId2 = v1();
