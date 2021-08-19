@@ -133,16 +133,14 @@ function AppWithReducers() {
                                 <Grid item>
                                     <Paper style={{padding: '10px'}}>
                                         <Todolist
+                                            todolist={tl}
                                             key={tl.id}
-                                            title={tl.title}
                                             tasks={tasksForTodolist}
                                             removeTask={removeTask}
                                             changeFilter={changeFilter}
                                             addTask={addTask}
                                             changeTaskStatus={changeStatus}
                                             changeTaskTitle={changeTaskTitle}
-                                            filter={tl.filter}
-                                            id={tl.id}
                                             removeTodolist={removeTodolist}
                                             changeTodolistTitle={changeTodolistTitle}
                                         />

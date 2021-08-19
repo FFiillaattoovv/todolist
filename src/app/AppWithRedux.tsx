@@ -35,7 +35,7 @@ function AppWithRedux() {
 
     const todolists = useSelector<AppRootStateType, Array<TodolistDomainType>>(state => state.todolists);
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks);
-    const status = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status);
+    const appStatus = useSelector<AppRootStateType, RequestStatusType>(state => state.app.status);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -89,7 +89,7 @@ function AppWithRedux() {
                     </Typography>
                     <Button color="inherit">Login</Button>
                 </Toolbar>
-                {status === 'loading' && <LinearProgress/>}
+                {appStatus === 'loading' && <LinearProgress/>}
             </AppBar>
             <Container fixed>
                 <Grid container style={{padding: '20px'}}>
@@ -104,16 +104,14 @@ function AppWithRedux() {
                                 <Grid item>
                                     <Paper style={{padding: '10px'}}>
                                         <Todolist
+                                            todolist={tl}
                                             key={tl.id}
-                                            title={tl.title}
                                             tasks={tasksForTodolist}
                                             removeTask={removeTask}
                                             changeFilter={changeFilter}
                                             addTask={addTask}
                                             changeTaskStatus={changeStatus}
                                             changeTaskTitle={changeTaskTitle}
-                                            filter={tl.filter}
-                                            id={tl.id}
                                             removeTodolist={removeTodolist}
                                             changeTodolistTitle={changeTodolistTitle}
                                         />

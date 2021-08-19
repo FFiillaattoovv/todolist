@@ -4,9 +4,10 @@ import {ControlPoint} from '@material-ui/icons';
 
 export type AddItemFormPropsType = {
     addItem: (title: string) => void
+    disabled?: boolean
 }
 
-export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
+export const AddItemForm = React.memo(({addItem, disabled = false}: AddItemFormPropsType) => {
     const [newTaskTitle, setNewTaskTitle] = useState('');
     const [error, setError] = useState<string | null>(null);
     const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +22,7 @@ export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
                 setError('Title is required')
                 return;
             }
-            props.addItem(newTaskTitle.trim());
+            addItem(newTaskTitle.trim());
             setNewTaskTitle('');
         }
     }
@@ -30,13 +31,14 @@ export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
             setError('Title is required')
             return;
         }
-        props.addItem(newTaskTitle.trim());
+        addItem(newTaskTitle.trim());
         setNewTaskTitle('');
     }
 
     return (
         <div>
-            <TextField value={newTaskTitle}
+            <TextField disabled={disabled}
+                       value={newTaskTitle}
                        variant={'outlined'}
                        label={'Type value'}
                        error={!!error}
@@ -44,7 +46,7 @@ export const AddItemForm = React.memo((props: AddItemFormPropsType) => {
                        onChange={onNewTitleChangeHandler}
                        onKeyPress={onKeyPressHandler}
             />
-            <IconButton onClick={addTask} color={'primary'}>
+            <IconButton onClick={addTask} color={'primary'} disabled={disabled}>
                 <ControlPoint/>
             </IconButton>
         </div>
