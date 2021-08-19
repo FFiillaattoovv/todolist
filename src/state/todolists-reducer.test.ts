@@ -8,16 +8,17 @@ import {
     SetTodolistActionType,
     setTodolistAC,
     TodolistDomainType,
-    FilterValuesType
+    FilterValuesType, ChangeTodolistEntityStatusActionType, changeTodolistEntityStatusAC
 } from './todolists-reducer';
 import {v1} from 'uuid';
+import {RequestStatusType} from './app-reducer';
 
 let todolistId1 = v1();
 let todolistId2 = v1();
 
 const startState: Array<TodolistDomainType> = [
-    {id: todolistId1, title: 'What to learn', filter: 'all', addedDate: '', order: 0},
-    {id: todolistId2, title: 'What to buy', filter: 'all', addedDate: '', order: 0}
+    {id: todolistId1, title: 'What to learn', filter: 'all', addedDate: '', order: 0, entityStatus: 'idle'},
+    {id: todolistId2, title: 'What to buy', filter: 'all', addedDate: '', order: 0, entityStatus: 'idle'}
 ];
 
 
@@ -76,4 +77,16 @@ test('todolist should be set to the state', () => {
     const endState = todolistsReducer([], action);
 
     expect(endState.length).toBe(2);
+})
+
+test('correct entity status of todolist should be changed', () => {
+
+    let newStatus: RequestStatusType = 'loading';
+
+    const action: ChangeTodolistEntityStatusActionType = changeTodolistEntityStatusAC(todolistId2, newStatus);
+
+    const endState = todolistsReducer(startState, action);
+
+    expect(endState[0].entityStatus).toBe('idle');
+    expect(endState[1].entityStatus).toBe('loading');
 })
