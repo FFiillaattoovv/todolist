@@ -30,6 +30,12 @@ export type SetTodolistActionType = {
     todolists: Array<TodolistType>
 }
 
+export type ChangeTodolistEntityStatusActionType = {
+    type: 'CHANGE-TODOLIST-ENTITY-STATUS'
+    id: string
+    status: RequestStatusType
+}
+
 export type FilterValuesType = 'all' | 'completed' | 'active';
 
 export type TodolistDomainType = TodolistType & {
@@ -43,6 +49,7 @@ type ActionsType =
     | ChangeTodolistTitleActionType
     | ChangeTodolistFilterActionType
     | SetTodolistActionType
+    | ChangeTodolistEntityStatusActionType
 
 type ThunkDispatch = Dispatch<ActionsType | SetStatusActionType>;
 
@@ -73,6 +80,13 @@ export const todolistsReducer = (state: Array<TodolistDomainType> = initialState
             const todolist = state.find(tl => tl.id === action.id);
             if (todolist) {
                 todolist.filter = action.filter;
+            }
+            return [...state]
+        }
+        case 'CHANGE-TODOLIST-ENTITY-STATUS': {
+            const todolist = state.find(tl => tl.id === action.id);
+            if (todolist) {
+                todolist.entityStatus = action.status;
             }
             return [...state]
         }
@@ -109,6 +123,11 @@ export const changeTodolistFilterAC = (filter: FilterValuesType, id: string): Ch
 export const setTodolistAC = (todolists: Array<TodolistType>): SetTodolistActionType => {
     return {type: 'SET-TODOLIST', todolists: todolists}
 }
+
+export const changeTodolistEntityStatusAC = (id: string, status: RequestStatusType): ChangeTodolistEntityStatusActionType => {
+    return {type: 'CHANGE-TODOLIST-ENTITY-STATUS', id: id, status: status}
+}
+
 
 export const fetchTodolistsTC = () => {
     return (dispatch: ThunkDispatch) => {
