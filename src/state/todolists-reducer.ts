@@ -104,6 +104,7 @@ export const todolistsReducer = (state: Array<TodolistDomainType> = initialState
     }
 }
 
+
 export const removeTodolistAC = (todolistId: string): RemoveTodolistActionType => {
     return {type: 'REMOVE-TODOLIST', id: todolistId}
 }
@@ -141,10 +142,13 @@ export const fetchTodolistsTC = () => {
 }
 
 export const removeTodolistTC = (todolistId: string) => {
-    return (dispatch: Dispatch) => {
+    return (dispatch: ThunkDispatch) => {
+        dispatch(setAppStatusAC('loading'));
+        dispatch(changeTodolistEntityStatusAC(todolistId, 'loading'));
         todolistsAPI.deleteTodolist(todolistId)
             .then(response => {
                 dispatch(removeTodolistAC(todolistId));
+                dispatch(setAppStatusAC('succeeded'));
             })
     }
 }
