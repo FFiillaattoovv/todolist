@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useCallback, useEffect} from 'react'
 import './App.css'
 import {
     AppBar,
@@ -18,6 +18,7 @@ import {AppRootStateType} from './store'
 import {initializeAppTC, RequestStatusType} from './app-reducer'
 import {BrowserRouter, Route} from 'react-router-dom';
 import {Login} from '../features/Login/Login';
+import {logoutTC} from '../features/Login/auth-reducer';
 
 type PropsType = {
     demo?: boolean
@@ -27,18 +28,24 @@ function App({demo = false}: PropsType) {
     const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
     const isInitialized = useSelector<AppRootStateType, boolean>((state) => state.app.isInitialized)
     const dispatch = useDispatch()
+    const isLoggedIn = useSelector<AppRootStateType, boolean>((state) => state.auth.isLoggedIn)
 
     useEffect(() => {
         dispatch(initializeAppTC())
     }, [])
 
+    const logoutHandler = useCallback(() => {
+        dispatch(logoutTC())
+    }, [])
+
     if (!isInitialized) {
         return (
-            <div style={{position: "fixed", top: "40%", textAlign: "center", width: "100%"}}>
-                <CircularProgress />
+            <div style={{position: 'fixed', top: '40%', textAlign: 'center', width: '100%'}}>
+                <CircularProgress/>
             </div>
         )
     }
+
     return (
         <div className="App">
             <BrowserRouter>
@@ -51,7 +58,7 @@ function App({demo = false}: PropsType) {
                         <Typography variant="h6">
                             News
                         </Typography>
-                        <Button color="inherit">Login</Button>
+                        {isLoggedIn && <Button color="inherit" onClick={logoutHandler}>Log out</Button>}
                     </Toolbar>
                     {status === 'loading' && <LinearProgress/>}
                 </AppBar>
