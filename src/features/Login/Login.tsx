@@ -2,7 +2,7 @@ import React from 'react'
 import {Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Grid, TextField} from '@material-ui/core'
 import {useFormik} from 'formik';
 import {useDispatch} from 'react-redux';
-import {loginTC} from './login-reducer';
+import {loginTC} from './auth-reducer';
 
 export const Login = () => {
 
